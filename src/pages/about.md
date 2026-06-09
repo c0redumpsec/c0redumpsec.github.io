@@ -22,4 +22,4 @@ The focus is hands-on learning: understanding how systems behave, breaking probl
 
 I want to show more than just the final answer. The mistakes, dead ends, observations, and reasoning are usually where the useful lessons are.
 
-All content is intended for authorised testing, research, education, and defensive security purposes only.
+> All content is intended for authorised testing, research, education, and defensive security purposes only.

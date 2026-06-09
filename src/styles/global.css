@@ -304,3 +304,20 @@ h1 {
   text-transform: uppercase;
   letter-spacing: 0.18em;
 }
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  list-style: none;
+  margin: 1rem 0 2rem;
+  padding: 0;
+}
+
+.tag-list li {
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--accent);
+  font-size: 0.8rem;
+  padding: 0.3rem 0.65rem;
+}
