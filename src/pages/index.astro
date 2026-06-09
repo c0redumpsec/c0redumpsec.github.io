@@ -1,16 +1,12 @@
 ---
 import '../styles/global.css';
+import { getCollection } from 'astro:content';
 
-const posts = [
-  {
-    title: 'Welcome to c0redumpsec',
-    description: 'Security research, tooling, writeups, and experiments.',
-    date: 'Coming soon',
-    href: '#',
-  },
-];
+const posts = (await getCollection('blog'))
+  .filter((post) => !post.data.draft)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
 ---
-
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -68,26 +64,39 @@ const posts = [
           Security research, tooling, writeups, and lessons learned the hard way.
         </p>
       </section>
-
       <section class="posts" aria-labelledby="latest-posts">
-        <h2 id="latest-posts">Latest posts</h2>
+  <h2 id="latest-posts">Latest posts</h2>
 
-        <div class="post-list">
-          {
-            posts.map((post) => (
-              <article class="post-card">
-                <p class="post-date">{post.date}</p>
+  {
+    posts.length > 0 ? (
+      <div class="post-list">
+        {posts.map((post) => {
+          const slug = post.id.replace(/\.(md|mdx)$/, '');
 
-                <h3>
-                  <a href={post.href}>{post.title}</a>
-                </h3>
+          return (
+            <article class="post-card">
+              <p class="post-date">
+                {post.data.pubDate.toLocaleDateString('en-GB', {
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric',
+                })}
+              </p>
 
-                <p>{post.description}</p>
-              </article>
-            ))
-          }
-        </div>
-      </section>
+              <h3>
+                <a href={`/blog/${slug}/`}>{post.data.title}</a>
+              </h3>
+
+              <p>{post.data.description}</p>
+            </article>
+          );
+        })}
+      </div>
+    ) : (
+      <p>No posts published yet.</p>
+    )
+  }
+</section>
     </main>
   </body>
 </html>

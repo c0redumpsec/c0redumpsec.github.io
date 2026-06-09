@@ -6,6 +6,4 @@ tags: ["blog", "security", "learning"]
 draft: false
 ---
 
-# Coming Soon
-
 Initial notes and writeups will appear here.
