@@ -1,0 +1,93 @@
+---
+import '../styles/global.css';
+
+const posts = [
+  {
+    title: 'Welcome to c0redumpsec',
+    description: 'Security research, tooling, writeups, and experiments.',
+    date: 'Coming soon',
+    href: '#',
+  },
+];
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta
+      name="description"
+      content="c0redumpsec — security research, tooling, writeups, and experiments."
+    />
+    <title>c0redumpsec</title>
+  </head>
+
+  <body>
+    <header class="site-header">
+      <a href="/" class="brand" aria-label="c0redumpsec home">
+        <img
+          src="/assets/img/c0redumpsec-logo-green-wide.png"
+          alt="c0redumpsec"
+          class="logo"
+        />
+      </a>
+
+      <nav class="nav" aria-label="Main navigation">
+        <a href="/">Blog</a>
+        <a href="/about">About</a>
+        <a href="https://github.com/c0redumpsec">GitHub</a>
+      </nav>
+    </header>
+
+    <main class="page">
+      <section class="intro">
+	<h1 class="terminal-title" aria-label="$ Tales from the terminal.">
+  		<span id="terminal-title-text"></span><span class="terminal-cursor">|</span>
+	</h1>
+
+	<script>
+  		const text = '$ Tales from the terminal.';
+  		const target = document.getElementById('terminal-title-text');
+
+  		if (target) {
+    			let index = 0;
+
+    			const type = () => {
+      			target.textContent = text.slice(0, index);
+      			index += 1;
+
+      			if (index <= text.length) {
+        			window.setTimeout(type, 65);
+      			}	
+    		};
+
+    		window.setTimeout(type, 350);
+  		}
+	</script>
+        <p class="tagline">
+          Security research, tooling, writeups, and things learned the hard way.
+        </p>
+      </section>
+
+      <section class="posts" aria-labelledby="latest-posts">
+        <h2 id="latest-posts">Latest posts</h2>
+
+        <div class="post-list">
+          {
+            posts.map((post) => (
+              <article class="post-card">
+                <p class="post-date">{post.date}</p>
+
+                <h3>
+                  <a href={post.href}>{post.title}</a>
+                </h3>
+
+                <p>{post.description}</p>
+              </article>
+            ))
+          }
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
