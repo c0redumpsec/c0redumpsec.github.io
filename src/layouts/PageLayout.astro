@@ -1,0 +1,43 @@
+---
+import '../styles/global.css';
+
+const frontmatter = Astro.props.frontmatter ?? {};
+
+const title = frontmatter.title ?? 'c0redumpsec';
+const description =
+  frontmatter.description ??
+  'Security research, tooling, writeups, and technical notes.';
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <title>{title} | c0redumpsec</title>
+  </head>
+
+  <body>
+    <header class="site-header">
+      <a href="/" class="brand" aria-label="c0redumpsec home">
+        <img
+          src="/assets/img/c0redumpsec-logo-green-wide.png"
+          alt="c0redumpsec"
+          class="logo"
+        />
+      </a>
+
+      <nav class="nav" aria-label="Main navigation">
+        <a href="/">Blog</a>
+        <a href="/about">About</a>
+        <a href="https://github.com/YOUR_USERNAME">GitHub</a>
+      </nav>
+    </header>
+
+    <main class="page">
+      <section class="card about-card markdown-content">
+        <slot />
+      </section>
+    </main>
+  </body>
+</html>
