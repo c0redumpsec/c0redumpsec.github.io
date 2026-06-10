@@ -72,3 +72,4 @@ src
 │   └── rss.xml.js
 └── styles
     └── global.css
+```
