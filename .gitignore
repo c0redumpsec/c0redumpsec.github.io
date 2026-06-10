@@ -23,7 +23,7 @@ pnpm-debug.log*
 Thumbs.db
 .idea/
 .vscode/
-
+.obisidian/
 # temporary files
 *.swp
 *.swo
